@@ -1,12 +1,33 @@
-node_modules
-dist
-.idea
-.vscode
-*.log
-.env
-.tscache
-.next
-.out
-build
-.DS_Store
-.yarn/install-state.gz
+# --- Datasets (images hosted externally on Roboflow/Zenodo) ---
+Keypoint_detection.v10-512px-adaptive.yolov8/train/
+Keypoint_detection.v10-512px-adaptive.yolov8/test/
+Keypoint_detection.v10-512px-adaptive.yolov8/valid/
+Keypoint_detection.v10-512px-adaptive.yolov8/vizuali/
+vanjska/
+
+# --- Model weights (exceed GitHub's 100MB limit) ---
+*.pt
+*.pth
+
+# --- Manuscript / paper artifacts ---
+latest/
+*.docx
+revision_response_document.md
+output*.png
+
+# --- Notebook backups & checkpoints ---
+*.bak
+.ipynb_checkpoints/
+
+# --- Local tooling / leftovers from previous project ---
+.claude/
+.yarn/
+.yarnrc.yml
+.github/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
