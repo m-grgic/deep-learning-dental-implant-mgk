@@ -1,0 +1,16 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+kpt_shape: [6, 3]
+flip_idx: [0, 1, 2, 3, 4, 5]
+
+nc: 1
+names: ['keypoints']
+
+roboflow:
+  workspace: zaanalizuzubi
+  project: keypoint_detection-hkmwc
+  version: 10
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/zaanalizuzubi/keypoint_detection-hkmwc/dataset/10
