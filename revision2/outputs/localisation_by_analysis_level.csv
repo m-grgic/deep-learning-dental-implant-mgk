@@ -1,0 +1,6 @@
+level,n,mean,median,sd,wilcoxon_stat,p_one_sided
+"measurement, unfiltered",912,3.85,2.13,7.65,182899.0,0.0007489
+"measurement, filtered",843,2.9,1.96,2.81,123701.0,9.285e-15
+"per implant, unfiltered",152,3.85,2.74,3.68,6452.0,0.8797
+"per implant, filtered",142,3.16,2.64,1.61,4977.0,0.4197
+"per implant, mean of surviving (manuscript)",152,3.0,2.61,1.49,5018.0,0.07157

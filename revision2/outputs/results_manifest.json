@@ -1,0 +1,556 @@
+{
+  "generated_by": "IDJ_revision2_analysis.ipynb",
+  "environment": {
+    "ultralytics": "8.3.23",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.0.2",
+    "python": "3.12.13"
+  },
+  "config": {
+    "model": "model_02062025.pt",
+    "pred_conf": 0.25,
+    "pred_iou": 0.7,
+    "val_conf": 0.4,
+    "val_iou": 0.7,
+    "seed": 42,
+    "sigma_fixed": 0.075,
+    "primary_mbl_mode": "proj",
+    "n_boot": 2000,
+    "n_boot_map": 1000,
+    "reannotation_supplied": true
+  },
+  "results": {
+    "n_images_train": {
+      "value": 973,
+      "note": ""
+    },
+    "n_implants_train": {
+      "value": 1258,
+      "note": ""
+    },
+    "n_images_valid": {
+      "value": 119,
+      "note": ""
+    },
+    "n_implants_valid": {
+      "value": 160,
+      "note": ""
+    },
+    "n_images_test": {
+      "value": 122,
+      "note": ""
+    },
+    "n_implants_test": {
+      "value": 152,
+      "note": ""
+    },
+    "n_images_total": {
+      "value": 1214,
+      "note": ""
+    },
+    "n_implants_total": {
+      "value": 1570,
+      "note": ""
+    },
+    "test_mean_cluster_size": {
+      "value": 1.2459,
+      "note": ""
+    },
+    "test_images_multi_implant": {
+      "value": 26,
+      "note": ""
+    },
+    "test_implants_in_multi_images": {
+      "value": 56,
+      "note": ""
+    },
+    "iou_mean": {
+      "value": 0.8434,
+      "note": ""
+    },
+    "iou_ci": {
+      "value": [
+        0.8288,
+        0.8579
+      ],
+      "note": ""
+    },
+    "iou_median": {
+      "value": 0.8702,
+      "note": ""
+    },
+    "iou_sd": {
+      "value": 0.0933,
+      "note": ""
+    },
+    "iou_wilcoxon_stat": {
+      "value": 8825.0,
+      "note": ""
+    },
+    "iou_wilcoxon_p": {
+      "value": 1.5246126657962316e-08,
+      "note": ""
+    },
+    "box_mAP50": {
+      "value": 0.9933,
+      "note": "ultralytics 8.3.23, conf=0.4"
+    },
+    "box_mAP50_95": {
+      "value": 0.7867,
+      "note": "ultralytics 8.3.23, conf=0.4"
+    },
+    "pose_mAP50": {
+      "value": 0.9933,
+      "note": "ultralytics 8.3.23, conf=0.4"
+    },
+    "pose_mAP50_95": {
+      "value": 0.9332,
+      "note": "ultralytics 8.3.23, conf=0.4"
+    },
+    "map_recomputation_max_deviation": {
+      "value": 0.0,
+      "note": "bootstrap machinery reproduces Ultralytics val() exactly"
+    },
+    "box_mAP50_ci": {
+      "value": [
+        0.9889,
+        0.995
+      ],
+      "note": "image-level bootstrap, 1000 iterations"
+    },
+    "box_mAP50_95_ci": {
+      "value": [
+        0.7599,
+        0.8179
+      ],
+      "note": "image-level bootstrap, 1000 iterations"
+    },
+    "pose_mAP50_ci": {
+      "value": [
+        0.989,
+        0.995
+      ],
+      "note": "image-level bootstrap, 1000 iterations"
+    },
+    "pose_mAP50_95_ci": {
+      "value": [
+        0.9094,
+        0.9539
+      ],
+      "note": "image-level bootstrap, 1000 iterations"
+    },
+    "kpt_err_unfiltered_n": {
+      "value": 912,
+      "note": ""
+    },
+    "kpt_err_unfiltered_mean": {
+      "value": 3.85,
+      "note": ""
+    },
+    "kpt_err_unfiltered_sd": {
+      "value": 7.65,
+      "note": ""
+    },
+    "kpt_err_n_outliers": {
+      "value": 69,
+      "note": "IQR applied within each keypoint"
+    },
+    "kpt_err_filtered_mean": {
+      "value": 2.9,
+      "note": ""
+    },
+    "kpt_err_filtered_sd": {
+      "value": 2.81,
+      "note": ""
+    },
+    "kpt_err_filtered_ci": {
+      "value": [
+        2.72,
+        3.08
+      ],
+      "note": ""
+    },
+    "kpt_err_unfiltered_ci": {
+      "value": [
+        3.43,
+        4.43
+      ],
+      "note": ""
+    },
+    "kpt_err_n_gross_failures": {
+      "value": 1,
+      "note": ""
+    },
+    "table2": {
+      "value": [
+        {
+          "label": "AOI",
+          "n": 152,
+          "mean_unfiltered": 2.89,
+          "sd_unfiltered": 15.82,
+          "median_unfiltered": 1.26,
+          "n_removed": 9,
+          "mean_filtered": 1.4,
+          "sd_filtered": 0.8
+        },
+        {
+          "label": "IAC",
+          "n": 152,
+          "mean_unfiltered": 2.45,
+          "sd_unfiltered": 2.36,
+          "median_unfiltered": 1.72,
+          "n_removed": 17,
+          "mean_filtered": 1.74,
+          "sd_filtered": 1.05
+        },
+        {
+          "label": "IS1",
+          "n": 152,
+          "mean_unfiltered": 2.9,
+          "sd_unfiltered": 3.42,
+          "median_unfiltered": 1.95,
+          "n_removed": 14,
+          "mean_filtered": 2.01,
+          "sd_filtered": 1.28
+        },
+        {
+          "label": "IS2",
+          "n": 152,
+          "mean_unfiltered": 2.92,
+          "sd_unfiltered": 3.29,
+          "median_unfiltered": 1.96,
+          "n_removed": 11,
+          "mean_filtered": 2.2,
+          "sd_filtered": 1.42
+        },
+        {
+          "label": "BL1",
+          "n": 152,
+          "mean_unfiltered": 5.93,
+          "sd_unfiltered": 5.78,
+          "median_unfiltered": 3.96,
+          "n_removed": 11,
+          "mean_filtered": 4.69,
+          "sd_filtered": 3.47
+        },
+        {
+          "label": "BL2",
+          "n": 152,
+          "mean_unfiltered": 6.0,
+          "sd_unfiltered": 5.26,
+          "median_unfiltered": 4.36,
+          "n_removed": 7,
+          "mean_filtered": 5.25,
+          "sd_filtered": 3.99
+        }
+      ],
+      "note": ""
+    },
+    "kpt_wilcoxon_measurement_unfiltered_stat": {
+      "value": 182899.0,
+      "note": ""
+    },
+    "kpt_wilcoxon_measurement_unfiltered_p": {
+      "value": 0.000748862602015868,
+      "note": ""
+    },
+    "kpt_wilcoxon_measurement_filtered_stat": {
+      "value": 123701.0,
+      "note": ""
+    },
+    "kpt_wilcoxon_measurement_filtered_p": {
+      "value": 9.284954551195487e-15,
+      "note": ""
+    },
+    "kpt_wilcoxon_per_implant_unfiltered_stat": {
+      "value": 6452.0,
+      "note": ""
+    },
+    "kpt_wilcoxon_per_implant_unfiltered_p": {
+      "value": 0.8797162786734847,
+      "note": ""
+    },
+    "kpt_wilcoxon_per_implant_filtered_stat": {
+      "value": 4977.0,
+      "note": ""
+    },
+    "kpt_wilcoxon_per_implant_filtered_p": {
+      "value": 0.41971388209302285,
+      "note": ""
+    },
+    "kpt_wilcoxon_per_implant_mean_of_surviving_(manuscript)_stat": {
+      "value": 5018.0,
+      "note": ""
+    },
+    "kpt_wilcoxon_per_implant_mean_of_surviving_(manuscript)_p": {
+      "value": 0.07156926049852368,
+      "note": ""
+    },
+    "kpt_wilcoxon_unfiltered_stat": {
+      "value": 182899.0,
+      "note": ""
+    },
+    "kpt_wilcoxon_unfiltered_p": {
+      "value": 0.000748862602015868,
+      "note": ""
+    },
+    "oks_fixed_mean": {
+      "value": 0.8808,
+      "note": ""
+    },
+    "oks_fixed_ci": {
+      "value": [
+        0.8605,
+        0.8991
+      ],
+      "note": ""
+    },
+    "oks_fixed_median": {
+      "value": 0.9297,
+      "note": ""
+    },
+    "oks_fixed_sd": {
+      "value": 0.122,
+      "note": ""
+    },
+    "oks_wilcoxon_stat": {
+      "value": 9951.0,
+      "note": ""
+    },
+    "oks_wilcoxon_p": {
+      "value": 1.3725145370812876e-14,
+      "note": ""
+    },
+    "sigma_source": {
+      "value": "intra-observer re-annotation of the internal test set",
+      "note": ""
+    },
+    "sigma_n_pairs": {
+      "value": 152,
+      "note": ""
+    },
+    "sigma_per_keypoint": {
+      "value": {
+        "AOI": 0.0291,
+        "BL2": 0.2434,
+        "IS2": 0.2159,
+        "IAC": 0.0733,
+        "IS1": 0.221,
+        "BL1": 0.2366
+      },
+      "note": ""
+    },
+    "oks_empirical_mean": {
+      "value": 0.9486,
+      "note": ""
+    },
+    "oks_empirical_ci": {
+      "value": [
+        0.9387,
+        0.9572
+      ],
+      "note": ""
+    },
+    "oks_empirical_wilcoxon_p": {
+      "value": 1.7988838185551753e-26,
+      "note": ""
+    },
+    "mbl_zero_reference_proj": {
+      "value": 31,
+      "note": ""
+    },
+    "mbl_zero_reference_eucl": {
+      "value": 0,
+      "note": ""
+    },
+    "mbl_n": {
+      "value": 152.0,
+      "note": "unfiltered, proj"
+    },
+    "mbl_MAE": {
+      "value": 5.39,
+      "note": "unfiltered, proj"
+    },
+    "mbl_MAE_ci": {
+      "value": [
+        4.58,
+        6.31
+      ],
+      "note": "unfiltered, proj"
+    },
+    "mbl_RMSE": {
+      "value": 7.68,
+      "note": "unfiltered, proj"
+    },
+    "mbl_RMSE_ci": {
+      "value": [
+        6.43,
+        9.0
+      ],
+      "note": "unfiltered, proj"
+    },
+    "mbl_r": {
+      "value": 0.7246,
+      "note": "unfiltered, proj"
+    },
+    "mbl_r_ci": {
+      "value": [
+        0.6392,
+        0.7924
+      ],
+      "note": "unfiltered, proj"
+    },
+    "mbl_wilcoxon_stat": {
+      "value": 5089.0,
+      "note": "unfiltered, proj"
+    },
+    "mbl_wilcoxon_p": {
+      "value": 0.09115701097883444,
+      "note": "unfiltered, proj"
+    },
+    "mbl_ba_bias": {
+      "value": -0.89,
+      "note": "unfiltered, proj"
+    },
+    "mbl_ba_loa_low": {
+      "value": -15.9,
+      "note": "unfiltered, proj"
+    },
+    "mbl_ba_loa_high": {
+      "value": 14.11,
+      "note": "unfiltered, proj"
+    },
+    "mbl_mae_gee": {
+      "value": 5.36,
+      "note": ""
+    },
+    "mbl_mae_gee_ci": {
+      "value": [
+        4.46,
+        6.25
+      ],
+      "note": ""
+    },
+    "mbl_mae_cluster_robust_ci": {
+      "value": [
+        4.5,
+        6.28
+      ],
+      "note": ""
+    },
+    "mbl_icc_image": {
+      "value": 0.2024,
+      "note": ""
+    },
+    "mbl_design_effect": {
+      "value": 1.0498,
+      "note": ""
+    },
+    "mbl_mae_gee_vs5_p": {
+      "value": 0.7829066839968456,
+      "note": ""
+    },
+    "clustered_comparison": {
+      "value": [
+        {
+          "statistic": "MBL MAE",
+          "point": 5.3873,
+          "naive_ci": [
+            4.5988,
+            6.2521
+          ],
+          "cluster_ci": [
+            4.5361,
+            6.2959
+          ],
+          "ci_width_ratio": 1.064
+        },
+        {
+          "statistic": "MBL Pearson r",
+          "point": 0.7246,
+          "naive_ci": [
+            0.6093,
+            0.8236
+          ],
+          "cluster_ci": [
+            0.6053,
+            0.8232
+          ],
+          "ci_width_ratio": 1.017
+        },
+        {
+          "statistic": "mean IoU",
+          "point": 0.8434,
+          "naive_ci": [
+            0.8284,
+            0.8572
+          ],
+          "cluster_ci": [
+            0.8274,
+            0.8593
+          ],
+          "ci_width_ratio": 1.104
+        },
+        {
+          "statistic": "mean OKS",
+          "point": 0.8808,
+          "naive_ci": [
+            0.8604,
+            0.8999
+          ],
+          "cluster_ci": [
+            0.8582,
+            0.9029
+          ],
+          "ci_width_ratio": 1.128
+        },
+        {
+          "statistic": "mean keypoint error (%)",
+          "point": 3.8479,
+          "naive_ci": [
+            3.3251,
+            4.4932
+          ],
+          "cluster_ci": [
+            3.2432,
+            4.5497
+          ],
+          "ci_width_ratio": 1.118
+        }
+      ],
+      "note": ""
+    },
+    "intra_icc_a1": {
+      "value": 0.834,
+      "note": ""
+    },
+    "intra_icc_ak": {
+      "value": 0.909,
+      "note": ""
+    },
+    "intra_mae": {
+      "value": 3.83,
+      "note": ""
+    },
+    "intra_r": {
+      "value": 0.843,
+      "note": ""
+    },
+    "intra_iou_mean": {
+      "value": 0.826,
+      "note": ""
+    },
+    "regression_intercept_pct": {
+      "value": 3.86,
+      "note": ""
+    },
+    "regression_slope": {
+      "value": 0.53,
+      "note": ""
+    },
+    "regression_r2": {
+      "value": 0.53,
+      "note": ""
+    }
+  }
+}

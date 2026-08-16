@@ -9,11 +9,22 @@ vanjska/
 *.pt
 *.pth
 
-# --- Manuscript / paper artifacts ---
+# --- Manuscript / paper artifacts (not for publication) ---
 latest/
+ref/
 *.docx
 revision_response_document.md
 output*.png
+
+# --- Internal working material for the revision (not for publication) ---
+# Croatian-language handover pack for the co-authors, its packaged copy of the outputs,
+# and the number-registry summary. The public record is revision2/ itself.
+revision2/paket/
+revision2/registar_brojki.html
+revision2/*.zip
+
+# --- Superseded analysis runs ---
+revision2/outputs_run*/
 
 # --- Notebook backups & checkpoints ---
 *.bak

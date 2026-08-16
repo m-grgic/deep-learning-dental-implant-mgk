@@ -1,0 +1,7 @@
+keypoint,internal,n,sigma,sigma_trim95,sigma_per_annotator,source
+AOI,apex,152,0.0291,0.0256,0.0206,"intra-observer, internal test set"
+BL2,desni_kost,152,0.2434,0.2,0.1721,"intra-observer, internal test set"
+IS2,desni_vrh,152,0.2159,0.168,0.1526,"intra-observer, internal test set"
+IAC,vrh,152,0.0733,0.0447,0.0518,"intra-observer, internal test set"
+IS1,lijevi_vrh,152,0.221,0.1743,0.1563,"intra-observer, internal test set"
+BL1,lijevi_kost,152,0.2366,0.1893,0.1673,"intra-observer, internal test set"
