@@ -1,0 +1,22 @@
+{
+ "MBL absolute error": {
+  "icc": 0.352,
+  "deff": 1.086
+ },
+ "MBL signed difference": {
+  "icc": 0.519,
+  "deff": 1.128
+ },
+ "IoU": {
+  "icc": 0.705,
+  "deff": 1.173
+ },
+ "OKS (new sigma)": {
+  "icc": 0.501,
+  "deff": 1.123
+ },
+ "implant mean kp error": {
+  "icc": -0.166,
+  "deff": 0.959
+ }
+}

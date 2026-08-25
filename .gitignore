@@ -42,3 +42,11 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
+
+# --- Croatian-language correspondence with the co-authors ---
+revision2/odgovor_Juraj.md
+revision2/mail_Juraj.md
+revision2/mail_Juraj_2.md
+
+# --- Local helper, unrelated to the analysis ---
+revision2/md_to_docx.py

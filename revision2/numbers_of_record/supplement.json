@@ -1,0 +1,12 @@
+{
+  "_note": "Quantities reported in the manuscript that are not carried by numbers_of_record.json, because they are produced upstream of M1_numbers.py. Transcribed from the correction table circulated with the merged manuscript; to be replaced by generated output once 01_reproduce_internal_eval.py and its detection outputs are deposited alongside M1_numbers.py.",
+  "_source": "correction table, izmjene.docx",
+  "iou_sd": {"value": 0.0936, "note": "sample SD, ddof = 1"},
+  "iou_ci": {"value": [0.8276, 0.8589], "note": "cluster bootstrap over radiographs"},
+  "box_mAP50_95": {"value": 0.786, "note": "val() point estimate, ultralytics 8.3.23"},
+  "box_mAP50_95_ci": {"value": [0.76, 0.8141], "note": "cluster bootstrap over radiographs"},
+  "pose_mAP50_95": {"value": 0.9328, "note": "val() point estimate, ultralytics 8.3.23"},
+  "pose_mAP50_95_ci": {"value": [0.9093, 0.9536], "note": "cluster bootstrap over radiographs"},
+  "mbl_loa_lo_ci": {"value": [-19.1, -12.7], "note": "cluster bootstrap, percentage points"},
+  "mbl_loa_hi_ci": {"value": [11.7, 16.2], "note": "cluster bootstrap, percentage points"}
+}

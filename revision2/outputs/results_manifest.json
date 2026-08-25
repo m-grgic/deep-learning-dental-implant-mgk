@@ -6,6 +6,11 @@
     "numpy": "2.0.2",
     "python": "3.12.13"
   },
+  "superseded_by": {
+    "record": "../numbers_of_record/numbers_of_record.json",
+    "crosscheck": "manuscript_crosscheck.csv",
+    "explanation": "The results below are the output of IDJ_revision2_analysis.ipynb and are left as the record of that run. Sixteen quantities were recomputed afterwards and the manuscript reports the recomputed values: all interval estimates now come from a cluster bootstrap over radiographs rather than analytic formulae, the mAP figures are val() point estimates rather than means over bootstrap replicates, the IQR rule excludes 71 rather than 69 measurements, mean OKS is reported under per-keypoint tolerance constants, and the IoU SD uses ddof = 1. Every MBL point estimate is identical in both. Run reconcile.py to regenerate the cross-check."
+  },
   "config": {
     "model": "model_02062025.pt",
     "pred_conf": 0.25,

@@ -33,6 +33,35 @@ Environment for the committed run: ultralytics 8.3.23, torch 2.11.0, Python 3.12
 | `intraobserver_agreement.csv`, `intraobserver_pairs.csv` | reliability of the reference standard |
 | `figures/` | Figures 4 and 5 and Supplementary Figures S5 and S6, 300 dpi |
 
+`numbers_of_record/` holds the manuscript's numbers of record and the scripts that produce them
+and the figures; see the README there for the conventions they follow.
+
+## Which numbers are the record
+
+`numbers_of_record/numbers_of_record.json` is the authoritative source for every reported
+quantity. `outputs/` is the record of the notebook run; sixteen quantities were recomputed after
+it and the manuscript reports the recomputed values. Where the two differ, `numbers_of_record/`
+is correct. `reconcile.py` regenerates `outputs/manuscript_crosscheck.csv`, which lists all
+thirty-five quantities side by side.
+
+The differences are confined to interval estimates and to five point estimates:
+
+| quantity | `outputs/` | manuscript |
+|---|---|---|
+| box mAP@50-95 | 0.7867 | 0.7860 |
+| pose mAP@50-95 | 0.9332 | 0.9328 |
+| mean OKS | 0.8808 (fixed sigma) | 0.9487 (per-keypoint sigma) |
+| IoU SD | 0.0933 (ddof = 0) | 0.0936 (ddof = 1) |
+| outliers excluded | 69 | 71 (7.8%) |
+
+The mAP figures in `outputs/` are means over bootstrap replicates rather than the `val()` point
+estimates. All confidence intervals in the manuscript come from a cluster bootstrap over
+radiographs — 2,000 replicates, seed 20260816, IQR fences recomputed inside each replicate —
+rather than the analytic formulae used here, because 26 of the 122 test radiographs carry more
+than one implant. Every MBL point estimate — MAE 5.39,
+RMSE 7.68, r 0.7246, W 5089, bias −0.89, limits of agreement −15.90/+14.11, y = 3.86 + 0.53x —
+is identical in both.
+
 ## Sections
 
 1. Environment, configuration, seeds, and staging of the dataset to local disk
@@ -73,6 +102,10 @@ both the derived constants and the fixed value used previously.
 with the unfiltered figures treated as the conservative estimate. One measurement in the test
 set exceeds 50% of the bounding-box diagonal and is retained in the unfiltered analysis.
 
+**The archived test split names its label directory `test_labels/`.** Ultralytics expects
+`labels/` beside `images/`; given `test_labels/` it reports mAP 0.0000 without raising an error
+and writes an empty `labels.cache`, which then has to be deleted before a corrected run.
+
 **IS1 and BL1 are the image-left keypoints**, IS2 and BL2 the image-right ones, matching the
 keypoint order declared in the annotation export. They carry no anatomical side information.
 
@@ -87,5 +120,8 @@ particular export is the reference copy.
 - `IDJ_revision2_analysis.ipynb` — the notebook
 - `IDJ_revision2_analysis.executed.ipynb` — the same notebook with the outputs of the committed run
 - `build_nb.py` — generates the notebook; edit this rather than the `.ipynb` and regenerate
+- `reconcile.py` — regenerates `outputs/manuscript_crosscheck.csv` from `numbers_of_record/`
+- `sigma_derivation.py` — standalone derivation of the six OKS tolerance constants from
+  `intra_rater/` and the test-set labels, with a comparison against the reported values
 - `test_nb_math.py` — checks the geometry, OKS, sigma estimation and ICC implementations
   against real label files and, for the ICC, against the worked example in Shrout & Fleiss (1979)
