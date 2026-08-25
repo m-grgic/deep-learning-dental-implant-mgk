@@ -120,6 +120,8 @@ particular export is the reference copy.
 - `IDJ_revision2_analysis.ipynb` — the notebook
 - `IDJ_revision2_analysis.executed.ipynb` — the same notebook with the outputs of the committed run
 - `build_nb.py` — generates the notebook; edit this rather than the `.ipynb` and regenerate
+- `rebuild_inputs.py` — reconstructs the intermediate tables `numbers_of_record/` was computed
+  from, and verifies the reconstruction against it
 - `reconcile.py` — regenerates `outputs/manuscript_crosscheck.csv` from `numbers_of_record/`
 - `sigma_derivation.py` — standalone derivation of the six OKS tolerance constants from
   `intra_rater/` and the test-set labels, with a comparison against the reported values

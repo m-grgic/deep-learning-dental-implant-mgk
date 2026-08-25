@@ -41,10 +41,24 @@ are reported for comparability with the previous round.
 
 ## Reproducing it
 
-`M1_numbers.py` and `M2_figures.py` read intermediate tables — `per_instance.csv`,
-`per_keypoint_errors.csv`, `matched_keypoints.csv`, `mbl_proj.csv`, `cluster_bootstrap.json` —
-produced by `01_reproduce_internal_eval.py`, which are not yet deposited here. Until they are,
-the scripts document the definitions and `numbers_of_record.json` carries the results.
+`M1_numbers.py` and `M2_figures.py` read intermediate tables produced upstream by
+`01_reproduce_internal_eval.py`, which is not deposited here. `../rebuild_inputs.py` reconstructs
+those tables into `rebuilt/` from `../outputs/per_implant_test.csv` and checks the result against
+`numbers_of_record.json`: every quantity agrees to at least four significant figures, including
+the fixed-sigma OKS, the localisation error, the MBL statistics and the clustering ICC.
+
+One column does not survive the reconstruction. `M1_numbers.py` reads the `outlier` flag from
+`per_keypoint_errors.csv` rather than computing it. Applying the 1.5 × IQR rule within each
+keypoint to the reconstructed errors flags 69 measurements; the manuscript reports 71, and 71 is
+the count that reproduces the published Table 2. The two extra exclusions are one AOI and one BL2
+measurement — for BL2 it is `3-2-91` instance 0, at 16.74% of the diagonal against a fence of
+17.64%, and excluding it returns the reported 5.17 and 3.89 exactly. The rule that produced these
+flags is in `01_reproduce_internal_eval.py`.
+
+`cluster_bootstrap.json` is read only by `M2_figures.py`, for figure annotations; the intervals
+themselves are in `numbers_of_record.json` under `ci_cluster`. `matched_keypoints.csv` is not
+needed at all: `M1_numbers.py` uses its coordinates only to compute the per-keypoint separation,
+which `rebuilt/keypoint_distances.csv` carries directly.
 
 The dataset path in `M1_numbers.py` was an absolute path on the machine it was written on;
 it now resolves relative to the repository, or to `DATASET_ROOT` if that is set. Nothing else in
