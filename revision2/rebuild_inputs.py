@@ -20,9 +20,19 @@ What is not
 
     per_keypoint_errors.csv:outlier. M1 reads this column, it does not compute it. Applying the
     1.5 x IQR rule within each keypoint to the errors above flags 69 measurements; the manuscript
-    reports 71, and that is the count that reproduces the published Table 2. The two extra
-    exclusions are one AOI and one BL2 measurement. The rule that produced them is in
-    01_reproduce_internal_eval.py.
+    reports 71, and that is the count that reproduces the published Table 2.
+
+    The gap is not the rule but one implant. 3-2-91 instance 0 is the only implant in the test set
+    where the two ways of pairing a prediction with an annotation disagree: its image carries two
+    predictions, box overlap selects the first and keypoint proximity the second, and this
+    notebook uses box overlap. Under that choice its BL2 error is 16.74% of the diagonal against a
+    fence of 17.64%, and its AOI error 3.62% against a fence of 3.80% - in both keypoints the
+    closest value below the fence. Under the other choice both cross, which accounts for exactly
+    the two extra exclusions. Removing that implant's BL2 measurement returns the reported 5.17
+    and 3.89 exactly; removing its AOI measurement returns 1.39 and 0.78 against the reported 1.37
+    and 0.76, so at least one further AOI measurement differs between the two runs.
+
+    Which prediction 01_reproduce_internal_eval.py assigned to that implant is the open question.
 
     cluster_bootstrap.json. Only M2_figures.py reads it, for figure annotations; the intervals
     themselves are in numbers_of_record.json under ci_cluster.
@@ -188,6 +198,22 @@ for label in ORDER:
     ref = record["table2"][label]
     print(f"{label:<6}{sum(1 for g in group if g['outlier']):>9}{ref['n_excluded']:>8}"
           f"{100 * mean(kept):>16.2f}{ref['fil_mean']:>9.2f}")
+
+ambiguous = [r for r in rows if r["match_agrees"] != "True"]
+multi = sum(1 for r in rows if int(r["n_pred"]) > 1)
+print(f"\n{multi} of {len(rows)} implants come from an image carrying more than one prediction; "
+      f"in {len(ambiguous)} the two matching rules disagree")
+for r in ambiguous:
+    stem = r["image"].rsplit(".", 1)[0]
+    print(f"  {stem[:24]} instance {r['instance_idx']}: {r['n_pred']} predictions, "
+          f"box overlap picks {r['match_iou_idx']}, keypoint proximity picks {r['match_kpt_idx']}")
+    for label in ORDER:
+        name = next(k for k, v in LABEL.items() if v == label)
+        err = [g["error"] for g in by_kpt[label]]
+        q1, q3 = quantile(err, 25), quantile(err, 75)
+        value = float(r["d_" + name])
+        print(f"    {label:<4} {100 * value:7.2f}%   fence {100 * (q3 + 1.5 * (q3 - q1)):7.2f}%"
+              f"   {'excluded' if value > q3 + 1.5 * (q3 - q1) else 'kept'}")
 
 if not all(ok for _, _, _, ok in checks):
     print("\nThe only expected difference is the outlier count; see the module docstring.")

@@ -50,10 +50,19 @@ the fixed-sigma OKS, the localisation error, the MBL statistics and the clusteri
 One column does not survive the reconstruction. `M1_numbers.py` reads the `outlier` flag from
 `per_keypoint_errors.csv` rather than computing it. Applying the 1.5 × IQR rule within each
 keypoint to the reconstructed errors flags 69 measurements; the manuscript reports 71, and 71 is
-the count that reproduces the published Table 2. The two extra exclusions are one AOI and one BL2
-measurement — for BL2 it is `3-2-91` instance 0, at 16.74% of the diagonal against a fence of
-17.64%, and excluding it returns the reported 5.17 and 3.89 exactly. The rule that produced these
-flags is in `01_reproduce_internal_eval.py`.
+the count that reproduces the published Table 2.
+
+The gap is one implant, not the rule. `3-2-91` instance 0 is the only implant in the test set
+where the two ways of pairing a prediction with an annotation disagree: its image carries two
+predictions, box overlap selects the first and keypoint proximity the second, and the notebook
+uses box overlap. Under that choice its BL2 error is 16.74% of the bounding-box diagonal against
+a fence of 17.64%, and its AOI error 3.62% against a fence of 3.80% — in both keypoints the
+closest value below the fence. Under the other choice both cross, which is exactly the two extra
+exclusions. Dropping its BL2 measurement returns the reported 5.17 and 3.89 exactly; dropping its
+AOI measurement returns 1.39 and 0.78 against the reported 1.37 and 0.76, so at least one further
+AOI measurement differs between the two runs. Sixty-eight of the 152 implants come from an image
+carrying more than one prediction, so the configuration is not unusual — this is the only one
+where the rules part company.
 
 `cluster_bootstrap.json` is read only by `M2_figures.py`, for figure annotations; the intervals
 themselves are in `numbers_of_record.json` under `ci_cluster`. `matched_keypoints.csv` is not
